@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <h1>Dungeon Configurations</h1>
+  {% if configurations %}
+  <ul class="list-group">
+    {% for configuration in configurations %}
+    <li class="list-group-item">
+      <h2><a href="#" class="configuration-link" data-id="{{ configuration.id }}">{{ configuration.name }}</a></h2>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No dungeon configurations found.</p>
+  {% endif %}
+
+  <div id="configurationDetails">
+    <h2>Configuration Details</h2>
+    <div id="configurationContent">
+      <p>Select a configuration to view its details.</p>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script>
+  $(document).ready(function() {
+    $('.configuration-link').click(function(e) {
+      e.preventDefault();
+      var configurationId = $(this).data('id');
+      $.ajax({
+        method: 'GET',
+        url: "{% url 'configuration_details' 0 %}".replace('0', configurationId),
+        success: function(data) {
+          $('#configurationContent').html(data);
+        },
+        error: function(xhr, status, error) {
+          if (xhr.status == 404) {
+            $('#configurationContent').html('<p>Configuration not found.</p>');
+          } else {
+            $('#configurationContent').html('<p>Error loading configuration details.</p>');
+          }
+        }
+      });
+    });
+  });
+</script>
+{% endblock %}
