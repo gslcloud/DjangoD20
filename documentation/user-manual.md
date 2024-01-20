@@ -3,13 +3,13 @@
 ## Table of Contents
 1. Introduction
 2. Installation and Setup
-   2.1 Prerequisites
-   2.2 Installation
-   2.3 Setting Up the Database
+   - 2.1 Prerequisites
+   - 2.2 Installation
+   - 2.3 Setting Up the Database
 3. Using Dungeon Master
-   3.1 Dungeon Management
-   3.2 Character Class Customization
-   3.3 Dungeon Types
+   - 3.1 Dungeon Management
+   - 3.2 Character Class Customization
+   - 3.3 Dungeon Types
 4. Troubleshooting
 5. Appendix
 
