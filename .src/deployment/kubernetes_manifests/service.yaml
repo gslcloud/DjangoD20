@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dungeon-master-service
+  labels:
+    app: dungeon-master
+    tier: backend
+spec:
+  selector:
+    app: dungeon-master
+    tier: backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: ClusterIP
+  namespace: your-namespace  # Replace with the actual namespace
+
+# Add comments to provide context and explanation
+#
+# apiVersion: The version of the Kubernetes API to use for this Service
+# kind: The type of Kubernetes object (Service in this case)
+# metadata: Information about the Service, such as its name and labels
+# spec: Specification for the Service, including selector, ports, type, and namespace
+# selector: Defines the pods that the Service should route traffic to
+# ports: Specifies the port configuration for the Service
+# type: The type of Service (ClusterIP in this case)
+# namespace: The namespace where the Service will be deployed
