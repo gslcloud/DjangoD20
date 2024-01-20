@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dungeon Master</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Add a link to an external CSS file -->
+
+  <!-- Add any additional meta tags or stylesheets required -->
+</head>
+
+<body>
+  <h1>Welcome to the Dungeon Master</h1>
+
+  <div class="dungeon-config">
+    <form action="" method="POST">
+      {% csrf_token %}
+
+      <label for="dungeon_type">Dungeon Type:</label>
+      <select name="dungeon_type" id="dungeon_type">
+        <option value="cave">Cave</option>
+        <option value="castle">Castle</option>
+        <option value="forest">Forest</option>
+      </select>
+
+      <label for="difficulty">Difficulty:</label>
+      <input type="number" name="difficulty" id="difficulty" min="1" max="10" required>
+
+      <label for="monsters">Monsters:</label>
+      <textarea name="monsters" id="monsters" rows="5" required></textarea>
+
+      <button type="submit">Generate Dungeon</button>
+    </form>
+  </div>
+
+  {% if dungeon_type %}
+  <div class="dungeon-result">
+    <h2>{{ dungeon_type.capitalize() }} Dungeon</h2>
+    <p>Difficulty: {{ difficulty }}</p>
+    <p>Monsters: {{ monsters }}</p>
+  </div>
+  {% endif %}
+
+  <script src="app.js"></script> <!-- Add a script file if necessary -->
+</body>
+
+</html>
