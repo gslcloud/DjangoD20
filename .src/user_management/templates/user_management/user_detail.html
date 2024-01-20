@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="user-details">
+    <h2>User Details</h2>
+    <div>
+      <label>Username:</label>
+      <span>{{ user.username }}</span>
+    </div>
+    <div>
+      <label>Email:</label>
+      <span>{{ user.email }}</span>
+    </div>
+    <!-- Add any additional relevant user details here -->
+    {% if user.has_perm('change_user') %}
+    <div class="user-actions">
+      <a href="{% url 'user:update' %}" class="btn btn-primary">Edit User</a>
+    </div>
+    {% endif %}
+  </div>
+{% endblock %}
