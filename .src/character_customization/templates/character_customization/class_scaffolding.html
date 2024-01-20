@@ -1,0 +1,15 @@
+<form action="{% url 'submit_class_scaffolding' %}" method="POST">
+  {% csrf_token %}
+  
+  <label for="class_type">Class Type:</label>
+  <select id="class_type" name="class_type">
+    <option value="frontend">Frontend Developer</option>
+    <option value="backend">Backend Developer</option>
+    <option value="fullstack">Fullstack Developer</option>
+  </select>
+
+  <label for="class_name">Class Name:</label>
+  <input type="text" id="class_name" name="class_name" required>
+
+  <button type="submit">Submit</button>
+</form>
